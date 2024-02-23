@@ -17,9 +17,12 @@ let activeImage = 0  //img in pos 0
 
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
-
 //console.log(prevBtn, nextBtn);
 
+//thumbnail laterale
+
+let activeThumbnail = 0
+const thumbnail = document.querySelector(".thumbnails")
 
 
 /* FOR */
@@ -31,11 +34,18 @@ const nextBtn = document.querySelector(".next");
 for (let i = 0; i < picsArray.length; i++) {
     const currentImage = picsArray[i];
     //console.log(currentImage);
+    const currentThumbnail = picsArray[i];
+    //console.log(currentThumbnail);
 
     const currentImageMarkup = `<img src="./assets/img/${currentImage}" alt="" class="${activeImage === i ? "active" : ""}">`
     //console.log(currentImageMarkup);
 
+    const currentThumbnailMarkup = `<img src="./assets/img/${currentThumbnail}" alt="" class="${activeThumbnail === i ? "layer-active" : ""}">`
+    //console.log(currentThumbnailMarkup);
+
     picsElement.innerHTML += currentImageMarkup;
+
+    thumbnail.innerHTML += currentThumbnailMarkup;
 
 }
 
@@ -43,43 +53,75 @@ for (let i = 0; i < picsArray.length; i++) {
 /* BUTTONS */
 //buttons addEventListener
 
-
+//next
 nextBtn.addEventListener("click", function () {
     //console.log("next");
     
-    activeImage++;  
+    activeImage++;
+
+    activeThumbnail++;  
     
     //Non farlo rompere dopo l'ultimo elemento
    
     if(activeImage > picsArray.length - 1){
         activeImage = 0
     }
+
+    if(activeThumbnail > picsArray.length - 1){
+        activeThumbnail = 0
+    }
     
+    //img
     const currentActiveImage = document.querySelector("img.active")
     
     currentActiveImage.classList.remove("active") //toglie active dall'immagine che si vede
     
-    const pics = document.querySelectorAll("img")
+    const pics = document.querySelectorAll(".pics > img")
     //console.log(pics);
     //console.log(pics[activeImage]);
     
     pics[activeImage].classList.add("active") //aggiunge active all'immagine successiva che deve apparire (activeImage) che vado a pescare da dentro pics    
 
+
+    //thumbnail
+    const currentActiveThumbnail = document.querySelector("img.layer-active");
+    currentActiveThumbnail.classList.remove("layer-active");    
+    
+    const thumbnailPics = document.querySelectorAll(".thumbnails > img")
+    thumbnailPics[activeThumbnail].classList.add("layer-active");
 })
 
+//prev
 prevBtn.addEventListener("click", function(){
     
     activeImage--;
+
+    activeThumbnail--;
 
     if(activeImage < 0){
         activeImage = picsArray.length - 1;
     }
 
+    if(activeThumbnail < 0){
+        activeThumbnail = picsArray.length - 1;
+    }
+
+    //img
     const currentActiveImage = document.querySelector("img.active");
     currentActiveImage.classList.remove("active");
 
-    const pics = document.querySelectorAll("img");
+    const pics = document.querySelectorAll(".pics > img");
     pics[activeImage].classList.add("active");
 
     
+    //thumbnail
+    const currentActiveThumbnail = document.querySelector("img.layer-active");
+    currentActiveThumbnail.classList.remove("layer-active");    
+    
+    const thumbnailPics = document.querySelectorAll(".thumbnails > img")
+    thumbnailPics[activeThumbnail].classList.add("layer-active");
+
+
 })
+
+
