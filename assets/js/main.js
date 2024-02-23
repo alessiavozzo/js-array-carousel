@@ -49,6 +49,11 @@ nextBtn.addEventListener("click", function () {
     
     activeImage++;  
     
+    //Non farlo rompere dopo l'ultimo elemento
+   
+    if(activeImage > picsArray.length - 1){
+        activeImage = 0
+    }
     
     const currentActiveImage = document.querySelector("img.active")
     
