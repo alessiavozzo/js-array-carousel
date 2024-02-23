@@ -25,10 +25,13 @@ let activeImage = 0  //img in pos 0
 
 for (let i = 0; i < picsArray.length; i++) {
     const currentImage = picsArray[i];
-    //console.log(currentImage);
+    console.log(currentImage);
 
-    const currentImageMarkup = `<img src="./assets/img/${currentImage}" alt="" class="active">`
-    //console.log(currentImageMarkup);
+    const currentImageMarkup = `<img src="./assets/img/${currentImage}" alt="" class="${activeImage === i ? "active" : ""}">`
+    console.log(currentImageMarkup);
+
+    picsElement.innerHTML += currentImageMarkup;
+    
 }
 
 
