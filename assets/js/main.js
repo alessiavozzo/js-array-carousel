@@ -36,25 +36,45 @@ for (let i = 0; i < picsArray.length; i++) {
     //console.log(currentImageMarkup);
 
     picsElement.innerHTML += currentImageMarkup;
-    
+
 }
 
 
 /* BUTTONS */
 //buttons addEventListener
 
-nextBtn.addEventListener("click", function(){
+
+nextBtn.addEventListener("click", function () {
     //console.log("next");
-
-    activeImage++;
-
+    
+    activeImage++;  
+    
+    
     const currentActiveImage = document.querySelector("img.active")
+    
     currentActiveImage.classList.remove("active") //toglie active dall'immagine che si vede
-
+    
     const pics = document.querySelectorAll("img")
     //console.log(pics);
     //console.log(pics[activeImage]);
+    
+    pics[activeImage].classList.add("active") //aggiunge active all'immagine successiva che deve apparire (activeImage) che vado a pescare da dentro pics    
 
-    pics[activeImage].classList.add("active") //aggiunge active all'immagine successiva che deve apparire (activeImage) che vado a pescare da dentro pics
 })
 
+prevBtn.addEventListener("click", function(){
+    
+    activeImage--;
+
+    if(activeImage < 0){
+        activeImage = picsArray.length - 1;
+    }
+
+    const currentActiveImage = document.querySelector("img.active");
+    currentActiveImage.classList.remove("active");
+
+    const pics = document.querySelectorAll("img");
+    pics[activeImage].classList.add("active");
+
+    
+})
