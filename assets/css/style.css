@@ -1,10 +1,67 @@
-/* reset */
-*{
+/* #region reset */
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-body{
-    background-color: aqua;
+/* #endregion reset */
+
+/* #region utilities */
+
+.d-flex {
+    display: flex;
+}
+
+/* #endregion utilities */
+
+/* #region common */
+
+body {
+    height: 100vh;
+}
+
+.container {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+/* #endregion common */
+
+/* #region carousel */
+
+.carousel {
+    width: 70%;
+    height: 50%;
+    margin: auto;
+    position: relative;
+
+
+
+    >img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+}
+
+/* #region buttons */
+
+.control-buttons {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    width: 100%;
+    height: 95%;
+
+    & .btn {
+        padding: 0.5rem;
+        border-radius: 50%;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.589);
+    }
 }
