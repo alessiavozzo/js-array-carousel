@@ -1,7 +1,7 @@
 /* VARIABILI */
 //img array
 
-picsArray = [
+const picsArray = [
     "01.webp",
     "02.webp",
     "03.webp",
@@ -37,8 +37,17 @@ for (let i = 0; i < picsArray.length; i++) {
     const currentThumbnail = picsArray[i];
     //console.log(currentThumbnail);
 
-    const currentImageMarkup = `<img src="./assets/img/${currentImage}" alt="" class="${activeImage === i ? "active" : ""}">`
+    let classActive
+    if(activeImage === i){
+        classActive = "active"
+    }
+    else{
+        classActive = ""
+    }
+
+    const currentImageMarkup = `<img src="./assets/img/${currentImage}" alt="" class="${classActive}">`
     //console.log(currentImageMarkup);
+    //console.log(classActive);
 
     const currentThumbnailMarkup = `<img src="./assets/img/${currentThumbnail}" alt="" class="${activeThumbnail === i ? "layer-active" : ""}">`
     //console.log(currentThumbnailMarkup);
